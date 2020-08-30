@@ -11,196 +11,52 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/qs/6.9.4/qs.min.js"></script>
 </head>
 <body>
-<div id="head">
-<!--    ============================菜单====================================================-->
-    <i-Menu mode="horizontal" theme="dark">
-        <Menu-Item style="padding-left: 50px">
-            <Avatar src="/images/首页.png" shape="square" size="15"></Avatar>
-            <span>首页</span>
-        </Menu-Item>
-        <Menu-Item>
-            <Avatar src="/images/排行.png" shape="square" size="15"></Avatar>
-            <span>排行</span>
-        </Menu-Item>
-        <Menu-Item>
-            <Avatar src="/images/上传.png" shape="square" size="16"></Avatar>
-            <span>上传</span>
-        </Menu-Item>
-        <Menu-Item>
-            <Avatar src="/images/曝光.png" shape="square" size="15"></Avatar>
-            <span>曝光</span>
-        </Menu-Item>
-        <div style="float: right;padding-right: 50px">
-            <div v-if="!isLogin">
-                <Menu-Item>
-                    <span @click="showLogin=true">登录</span>
-                </Menu-Item>
-                <Menu-Item style="padding-left: 5px">
-                    <span @click="showRegister=true">注册</span>
-                </Menu-Item>
-            </div>
-            <div v-if="isLogin">
-                <Menu-Item style="padding-left: 5px">
-                    <div @click="showUserInfo=true">
-                        <Avatar icon="ios-person" size="large" style="margin: 0"></Avatar>
-                        <Icon type="md-arrow-dropright" style="font-size: 16px"></Icon>
-                    </div>
-                </Menu-Item>
-            </div>
+<div th:insert="head"></div>
+<div id="index" style="margin: 20px 15%;">
+    <div style="display: flex;">
+        <div>
+            <Carousel autoplay loop style="width: 460px">
+                <Carousel-Item>
+                    <img class="head_left" src="/images/111.jpg"></img>
+                </Carousel-Item>
+                <Carousel-Item>
+                    <img class="head_left" src="/images/222.jpg"></img>
+                </Carousel-Item>
+            </Carousel>
         </div>
-    </i-Menu>
-<!--===================================登录=====================================================-->
-    <Modal v-model="showLogin" width="350">
-        <i-Form>
-            <Form-Item prop="user">
-                <i-Input type="text" placeholder="邮箱">
-                <Icon type="ios-mail-outline" slot="prepend"></Icon>
-                </i-Input>
-            </Form-Item>
-            <Form-Item prop="password">
-                <i-Input type="password" placeholder="密码">
-                <Icon type="ios-lock-outline" slot="prepend"></Icon>
-                </i-Input>
-            </Form-Item>
-            <Form-Item>
-                <i-Button type="primary">登录</i-Button>
-            </Form-Item>
-        </i-Form>
-    </Modal>
-<!--=======================================注册========================================================-->
-    <Modal v-model="showRegister" width="350">
-        <i-Form>
-            <Form-Item prop="user">
-                <i-Input type="text" placeholder="邮箱">
-                    <Icon type="ios-mail-outline" slot="prepend"></Icon>
-                    <i-Button type="info" slot="append">发送</i-Button>
-                </i-Input>
-            </Form-Item>
-            <Form-Item prop="password">
-                <i-Input type="password" placeholder="密码">
-                    <Icon type="ios-lock-outline" slot="prepend"></Icon>
-                </i-Input>
-            </Form-Item>
-            <Form-Item prop="password">
-                <i-Input type="password" placeholder="确认密码">
-                    <Icon type="ios-lock-outline" slot="prepend"></Icon>
-                </i-Input>
-            </Form-Item>
-            <Form-Item prop="password">
-                <i-Input type="password" placeholder="验证码">
-                   <img src="/images/验证码.png" slot="prepend">
-                </i-Input>
-            </Form-Item>
-            <Form-Item prop="password">
-                <i-Input type="password" placeholder="昵称">
-                    <Icon type="ios-contact-outline" slot="prepend"></Icon>
-                </i-Input>
-            </Form-Item>
-            <Form-Item>
-                <i-Button type="primary">取消</i-Button>
-                <i-Button type="primary">注册</i-Button>
-            </Form-Item>
-        </i-Form>
-    </Modal>
-<!--    =================================个人信息==========================================-->
-    <Drawer v-model="showUserInfo" :closable="false">
-        <div style="display: flex;flex-direction: column;align-items: center">
-            <Avatar icon="ios-person" size="120" style="margin-top: 30px"></Avatar>
-            <div class="info">
-                <span>_________Yy</span>
-                <div>
-                    <span>12</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>54</span>
-                </div>
-                <div>
-                    <span>金币</span>&nbsp;&nbsp;&nbsp;
-                    <span>帖子</span>
-                </div>
-            </div>
-            <Card style="width: 100%;padding-top: 20px;color: #848484" shadow>
-                <Cell-Group>
-                    <Cell title="个人主页">
-                        <img src="/images/首页.png" slot="extra">
-                    </Cell>
-                    <Cell title="收藏">
-                        <img src="images/收藏.png" slot="extra">
-                    </Cell>
-                    <Cell title="我的帖子">
-                        <img src="images/帖子.png" slot="extra">
-                    </Cell>
-                    <Cell title="资料修改">
-                        <img src="images/修改.png" slot="extra">
-                    </Cell>
-                    <div>
-                        <Cell title="退出">
-                            <img src="images/退出.png" slot="extra">
-                        </Cell>
-                    </div>
-                </Cell-Group>
-            </Card>
+        <div class="head_right">
+            <span>fsfsadf</span>sdfsd
         </div>
-    </Drawer>
+    </div>
 </div>
 </body>
 <script>
-    var head = new Vue({
-        el: '#head',
-        data: {
-            isLogin:true,
-            showLogin:false,
-            showRegister:false,
-            showUserInfo:false,
+    var index=new Vue({
+        el:'#index',
+        data:{
+
         },
-        methods: {},
-        created() {
+        methods:{
+
+        },
+        created(){
 
         }
     })
 </script>
 <style>
-    .info>div{
-        padding-top: 8px;
+    .head_left{
+        width: 460px;
+        height: 360px;
+    }
+    .head_right{
+        margin-left: 10px;
+        height: 360px;
         width: 100%;
-        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
     }
-    .info{
-        font-family: 'PingFang SC','Helvetica Neue','Microsoft YaHei UI','Microsoft YaHei','Noto Sans CJK SC',Sathu,EucrosiaUPC,Arial,Helvetica,sans-serif;
-        font-weight: 700;
-        margin-top: 10px;
-        font-size: larger;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
-    .ivu-cell {
-        border-top-style: solid;
-        border-top-width: 1px;
-        border-top-color: #e8e8e8;
-    }
-    .ivu-drawer-body,.ivu-card-body{
-        padding: 0;
-    }
-    .ivu-modal-footer,.ivu-modal-close{
-        display: none;
-    }
-    .ivu-menu-horizontal{
-        height: 45px;
-        line-height: 45px;
-    }
-    .ivu-divider-horizontal{
-        margin: 1px 0;
-    }
-    .ivu-menu-item{
-        font-size: 17px;
-        display: flex;
-        align-items: center;
-    }
-    .ivu-menu-horizontal .ivu-menu-item{
-        padding-right: 0;
-    }
-    .ivu-avatar{
-        margin-right: 5px;
+    body {
+        background: #F5F5F5;
     }
 </style>
 </html>
